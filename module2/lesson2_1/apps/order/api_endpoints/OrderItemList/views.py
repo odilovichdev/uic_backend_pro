@@ -5,7 +5,7 @@ from apps.order.api_endpoints.OrderItemList.serializers import OrderItemListSeri
 
 
 class OrderItemListAPIView(ListCreateAPIView):
-    queryset = OrderItem.objects.all()
+    queryset = OrderItem.objects.select_related("product", "order").only("id", "quantity", "product__name", "product__price", "order__name", "order__user")
     serializer_class = OrderItemListSerializers
 
 

@@ -6,13 +6,13 @@ from apps.order.models import OrderItem, Order, Product
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = ("id", "name", "user", 'created_at')
+        fields = ("name", "user")
 
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ("id", "name", "price", "is_active", "image")
+        fields = ("name", "price")
 
 
 class OrderItemListSerializers(serializers.ModelSerializer):
@@ -23,7 +23,7 @@ class OrderItemListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = OrderItem
-        fields = ("id", "order", "order_data", "product", "product_data", "quantity")
+        fields = ("id", "product", "product_data", "order", "order_data", "quantity")
         extra_kwargs = {
             "order": {"write_only": True},
             "product": {"write_only": True}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, Order, OrderItem
+from .models import Product, Order, OrderItem, OrderItemConfig
 
 
 @admin.register(Product)
@@ -15,4 +15,9 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(OrderItemConfig)
+class OrderItemConfigAdmin(admin.ModelAdmin):
     pass

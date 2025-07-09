@@ -8,10 +8,18 @@ class ProductCreateSerializer(serializers.ModelSerializer):
         model = Product
         fields = ("id", "name", "price", "is_active", "image")
 
-    def validate(self, attrs):
+    # def validate(self, attrs):
+    #
+    #     if attrs.get("price") < 0:
+    #         raise serializers.ValidationError({"price": "Price 0 dan kichik bo'lishi mumkin emas."})
+    #
+    #     if attrs.get("name") and len(attrs.get('name')) < 3:
+    #         raise serializers.ValidationError({"name":"Product name uzunligi 3 ta harfdan kichik bo'lishi mumkin emas."})
 
-        if attrs.get("price") < 0:
-            raise serializers.ValidationError({"price": "Price 0 dan kichik bo'lishi mumkin emas."})
+    def validate_name(self, value):
+        if value and len(value) < 3:
+            raise serializers.ValidationError("Product name uzunligi 3 ta harfdan kichik bo'lishi mumkin emas.")
 
-        if attrs.get("name") and len(attrs.get('name')) < 3:
-            raise serializers.ValidationError({"name":"Product name uzunligi 3 ta harfdan kichik bo'lishi mumkin emas."})
+    def validate_price(self, value):
+        if value < 0:
+            raise serializers.ValidationError("Price 0 dan kichik bo'lishi mumkin emas.")

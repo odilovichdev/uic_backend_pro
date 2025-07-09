@@ -32,3 +32,17 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.order_id} | {self.product_id}"
+
+
+class OrderItemConfig(models.Model):
+    order_item = models.ForeignKey("order.OrderItem", on_delete=models.CASCADE, 
+                                   related_name="configurations")
+    key = models.CharField(_("Key"), max_length=30)
+    value = models.CharField(_("Value"), max_length=30)
+
+
+    class Meta:
+        unique_together = ("order_item", "key")
+        verbose_name = _("Order Item Config")
+        verbose_name_plural = _("Order Items Config")
+
