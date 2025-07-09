@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'query_counter',
+    "debug_toolbar",
 
     "rest_framework",
     "apps.order",
@@ -52,7 +53,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'query_counter.middleware.DjangoQueryCounterMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 
+]
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
 ]
 
 ROOT_URLCONF = 'core.urls'
