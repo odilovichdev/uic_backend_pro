@@ -6,6 +6,7 @@ from apps.order.api_endpoints import (
     ProductCreateAPIView,
     OrderListAPIView,
     OrderCreateAPIView,
+    OrderItemCreateAPIView
 )
 
 app_name = "order"
@@ -16,4 +17,5 @@ urlpatterns = [
     path("product-create", ProductCreateAPIView.as_view(), name="product-create"),
     path("order-list", OrderListAPIView.as_view(), name="order-list"),
     path("order-create", OrderCreateAPIView.as_view(), name="order-create"),
+    path("order-item-create", OrderItemCreateAPIView.as_view(), name="order-item-create"),
 ]
